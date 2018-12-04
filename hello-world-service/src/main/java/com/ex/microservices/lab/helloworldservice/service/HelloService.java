@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface HelloService {
 
 	@RequestMapping(value = "/hello/{name}")
-	String getHello(@PathVariable("name") String storeId);
+	String getHello(@PathVariable("name") String name);
 }

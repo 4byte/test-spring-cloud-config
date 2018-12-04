@@ -1,8 +1,7 @@
 package com.ex.microservices.lab.helloworldservice.controller;
 
-import com.ex.microservices.lab.helloworldservice.service.HelloService;
+import com.ex.microservices.lab.helloworldservice.service.HelloCircuitService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -15,11 +14,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/")
 public class HelloWorldController {
 	@Autowired
-	HelloService helloService;
+	HelloCircuitService helloCircuitService;
 
 	@RequestMapping("hello-world")
 	@ResponseBody
 	public String helloGet() {
-		return helloService.getHello("world");
+		return helloCircuitService.getHelloWorldWithCircuit("world");
 	}
 }
