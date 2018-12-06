@@ -16,16 +16,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Component
 @Controller
 @RequestMapping("/")
-public class NameController {
+public class NameController  {
 	@Autowired
 	private Sink sink;
 	@Autowired
 	private NameService nameService;
 
-	@StreamListener(target = Sink.INPUT)
+//	@StreamListener(target = Sink.INPUT)
 	public void processNameFromQueue(Message name) {
-		name.getMessageProperties().setContentType("text/plain");
-		nameService.addName(new String(name.getBody()));
-		System.out.println("Refreshed name " + name);
+//		name.getMessageProperties().setContentType("text/plain");
+//		System.out.println("Refreshed name " + name);
+//		nameService.addName(new String(name.getBody()));
+
+	}
+
+	public NameController() {
+//		sink.input().subscribe(message -> nameService.addName(message.getPayload().toString()));
 	}
 }

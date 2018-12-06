@@ -24,5 +24,6 @@ public class NameService {
 	public void addName(String name){
 		Long v = namesMap.getOrDefault(name, 0L);
 		namesMap.put(name, v + 1);
+		System.out.println("Refreshed "+name);
 	}
 }

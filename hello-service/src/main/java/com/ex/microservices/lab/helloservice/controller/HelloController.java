@@ -7,6 +7,7 @@ import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.support.GenericMessage;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -37,6 +38,6 @@ public class HelloController {
 
 	@SendTo(Source.OUTPUT)
 	public void pushNameToQueue(String name){
-		source.output().send(MessageBuilder.withPayload(name).build());
+		source.output().send(new GenericMessage<>(name));
 	}
 }
